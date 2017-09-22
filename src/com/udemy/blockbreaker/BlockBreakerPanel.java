@@ -44,18 +44,15 @@ public class BlockBreakerPanel extends JPanel implements KeyListener {
 	}
 		
 	public void update() {
-/* ball goes straight up from paddle - doesn't break any blocks.
- * changed from video x's and y's are reversed.  not sure why. */
 		for (Block ba : ball) {
 			ba.y += ba.dy;
 			if(ba.y > (getWidth() - size) && ba.dy > 0 || ba.y < 0) 
-				ba.y *= -1;
-			if(ba.x < 0 || ba.intersects(paddle)); 
+				ba.dy *= -1;
+				
+//			if(ba.x < 0 || ba.intersects(paddle))
+			if (ba.x > (getWidth() - size) && ba.dx > 0 || ba.x < 0)
 				ba.dx *= -1;
 			ba.x += ba.dx;
-/* with following code, ball should change direction as it hits block 
- * as it is, it destroys blocks it touches, but doesn't stop, or change
- * direction.  as before it goes to top and hovers erratically. 9.06 of 9.16*/
 			for(Block b : blocks) {
 				if(ba.intersects(b) && !b.destroyed){
 				b.destroyed = true;
