@@ -8,12 +8,14 @@ import java.awt.Image;
 
 public class Block extends Rectangle {
 	Image pic;
+	
 	int dx = 3;
 	int dy = -3;
 	Rectangle left;
 	Rectangle right;
 	boolean destroyed = false;
 	boolean powerUp = false;
+	
 	Block(int a, int b, int h, int w, String s) {
 		x = a; 
 		y = b; 
